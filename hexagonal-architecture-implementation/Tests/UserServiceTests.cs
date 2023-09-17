@@ -24,6 +24,8 @@ namespace Tests
             string login = "login";
             string password = "password";
             Group userGroup = Group.Admin;
+            State userState = State.Active;
+
             Guid userId = Guid.NewGuid();
             Guid userGroupId = Guid.NewGuid();
             Guid userStateId = Guid.NewGuid();
@@ -33,13 +35,13 @@ namespace Tests
             _userRepository.Setup(c => c.GetUserGroup(userGroup)).ReturnsAsync(new UserGroup()
             {
                 Id = userGroupId,
-                Code = Group.Admin
+                Code = userGroup
             });
 
-            _userRepository.Setup(c => c.GetUserState(State.Active)).ReturnsAsync(new UserState()
+            _userRepository.Setup(c => c.GetUserState(userState)).ReturnsAsync(new UserState()
             {
                 Id = userStateId,
-                Code = State.Active
+                Code = userState
             });
 
             string hashedPassword = "HASHED_PASSWORD";
@@ -49,8 +51,8 @@ namespace Tests
                 Id = userId,
                 Login = login,
                 PasswordHash = hashedPassword,
-                UserGroupId = userGroupId,
-                UserStateId = userStateId
+                UserGroupId = userGroup,
+                UserStateId = userState
             };
 
             _passwordHasher.Setup(c => c.Hash(password)).Returns(hashedPassword);
@@ -134,8 +136,8 @@ namespace Tests
         [Fact]
         public async Task DeleteUserById_WhenUserExist_ShouldReturnUser()
         {
-            Guid blockedStateId = Guid.NewGuid();
-            Guid notBlockedStateId = Guid.NewGuid();
+            State blockedStateId = State.Blocked;
+            State notBlockedStateId = State.Active;
 
             Guid id = Guid.NewGuid();
 
@@ -178,8 +180,8 @@ namespace Tests
         [Fact]
         public async Task DeleteUserByLogin_WhenUserExist_ShouldReturnUser()
         {
-            Guid blockedStateId = Guid.NewGuid();
-            Guid notBlockedStateId = Guid.NewGuid();
+            State blockedStateId = State.Blocked;
+            State notBlockedStateId = State.Active;
 
             string login = "login";
 
