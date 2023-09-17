@@ -55,8 +55,8 @@ namespace Domain.UseCases
                 Login = login,
                 PasswordHash = hashedPassword,
                 CreatedData = DateTime.Now,
-                UserGroupId = userGroup.Id,
-                UserStateId = userState.Id
+                UserGroupId = userGroup.Code,
+                UserStateId = userState.Code
             };
 
             var addedUser = await _userRepository.AddUser(userToAdd);
