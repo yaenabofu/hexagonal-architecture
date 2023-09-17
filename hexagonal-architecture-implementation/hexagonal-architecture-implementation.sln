@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DBB9F31C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{AA98B2D5-B032-4DC4-AE0F-7E1E3C00326F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests", "Tests\Domain.Tests.csproj", "{0A2E7205-B188-4324-8ADA-FDB2EF4B2F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{0A2E7205-B188-4324-8ADA-FDB2EF4B2F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter.MsSqlServer", "Adapter.MsSqlServer\Adapter.MsSqlServer.csproj", "{92BE462F-07C9-4346-97E3-239D2A995535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter.MsSqlServer", "Adapter.MsSqlServer\Adapter.MsSqlServer.csproj", "{92BE462F-07C9-4346-97E3-239D2A995535}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter.MsSqlServer.Tests", "Adapter.MsSqlServer.Tests\Adapter.MsSqlServer.Tests.csproj", "{AC4F92CC-54C6-4719-9479-A4B111C6F071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter.MsSqlServer.Tests", "Adapter.MsSqlServer.Tests\Adapter.MsSqlServer.Tests.csproj", "{AC4F92CC-54C6-4719-9479-A4B111C6F071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
