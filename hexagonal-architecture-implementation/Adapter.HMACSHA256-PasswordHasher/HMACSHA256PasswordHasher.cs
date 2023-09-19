@@ -7,7 +7,7 @@ namespace Adapter.HMACSHA256_PasswordHasher
 {
     public class HMACSHA256PasswordHasher : IPasswordHasher
     {
-        private HMACSHA256PasswordHasherConfiguration _config;
+        private readonly HMACSHA256PasswordHasherConfiguration _config;
         public HMACSHA256PasswordHasher(HMACSHA256PasswordHasherConfiguration config)
         {
             _config = config;
