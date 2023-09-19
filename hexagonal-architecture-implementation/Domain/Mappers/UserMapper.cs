@@ -15,11 +15,15 @@ namespace Domain.Mappers
                 CreatedData = user.CreatedData,
                 UserGroup = new UserGroupDTO()
                 {
-                    Code = user.UserGroupId,
+                    Id = user.UserGroup.Id,
+                    Code = user.UserGroup.Code,
+                    Description = user.UserGroup.Description,
                 },
                 UserState = new UserStateDTO()
                 {
-                    Code = user.UserStateId
+                    Id = user.UserState.Id,
+                    Code = user.UserState.Code,
+                    Description = user.UserState.Description,
                 }
             };
         }

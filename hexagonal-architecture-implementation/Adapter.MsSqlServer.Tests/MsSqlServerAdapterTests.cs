@@ -48,7 +48,51 @@ namespace Adapter.MsSqlServer.Tests
                 new User { Id = Guid.NewGuid(), Login = "Login_111", PasswordHash = "passwordHash" },
                 new User { Id = Guid.NewGuid(), Login = "Login_222", PasswordHash = "passwordHash" },
             };
+
             _userContext.Users.AddRange(users);
+
+            var newUserGroupAdmin = new UserGroup()
+            {
+                Id = Guid.NewGuid(),
+                Code = Group.Admin,
+                Description = "desc_AdminGroup",
+                Users = new List<User>()
+                {
+                    users[0],
+                }
+            };
+            var newUserGroupUser = new UserGroup()
+            {
+                Id = Guid.NewGuid(),
+                Code = Group.User,
+                Description = "desc_UserGroup",
+                Users = new List<User>()
+                {
+                    users[1],
+                }
+            };
+
+            await _userContext.AddAsync(newUserGroupUser);
+            await _userContext.AddAsync(newUserGroupAdmin);
+
+            var newUserStateActive = new UserState()
+            {
+                Id = Guid.NewGuid(),
+                Code = State.Active,
+                Description = "desc_ActiveState",
+                Users = new List<User>() { users[0], }
+            };
+            var newUserStateBlocked = new UserState()
+            {
+                Id = Guid.NewGuid(),
+                Code = State.Blocked,
+                Description = "desc_BlockedState",
+                Users = new List<User>() { users[1], }
+            };
+
+            await _userContext.AddAsync(newUserStateActive);
+            await _userContext.AddAsync(newUserStateBlocked);
+
             await _userContext.SaveChangesAsync();
 
             // Act
@@ -56,6 +100,7 @@ namespace Adapter.MsSqlServer.Tests
 
             // Assert
             Assert.Equal(users.Count, allUsers.Count());
+            Assert.Equal(2, allUsers.Select(c => c.UserGroup).Where(c => c is not null).Count());
 
             _userContext.Database.EnsureDeleted();
         }
@@ -71,10 +116,56 @@ namespace Adapter.MsSqlServer.Tests
             await userRepository.AddUser(newUser_1);
             await userRepository.AddUser(newUser_2);
 
+            var newUserGroupAdmin = new UserGroup()
+            {
+                Id = Guid.NewGuid(),
+                Code = Group.Admin,
+                Description = "desc_AdminGroup",
+                Users = new List<User>()
+                {
+                    newUser_2,
+                }
+            };
+            var newUserGroupUser = new UserGroup()
+            {
+                Id = Guid.NewGuid(),
+                Code = Group.User,
+                Description = "desc_UserGroup",
+                Users = new List<User>()
+                {
+                    newUser_1,
+                }
+            };
+
+            await _userContext.AddAsync(newUserGroupUser);
+            await _userContext.AddAsync(newUserGroupAdmin);
+
+            var newUserStateActive = new UserState()
+            {
+                Id = Guid.NewGuid(),
+                Code = State.Active,
+                Description = "desc_ActiveState",
+                Users = new List<User>() { newUser_1 }
+            };
+            var newUserStateBlocked = new UserState()
+            {
+                Id = Guid.NewGuid(),
+                Code = State.Blocked,
+                Description = "desc_BlockedState",
+                Users = new List<User>() { newUser_2 }
+            };
+
+            await _userContext.AddAsync(newUserStateActive);
+            await _userContext.AddAsync(newUserStateBlocked);
+            await _userContext.SaveChangesAsync();
+
             var foundUserById = await userRepository.GetUserById(newUser_1.Id);
 
             // Assert
             Assert.NotNull(foundUserById);
+            Assert.NotNull(foundUserById.UserGroup);
+            Assert.NotNull(foundUserById.UserState);
+
             Assert.Equal(newUser_1.Id, foundUserById.Id);
 
             _userContext.Database.EnsureDeleted();
@@ -106,14 +197,59 @@ namespace Adapter.MsSqlServer.Tests
             var newUser_1 = new User { Id = Guid.NewGuid(), Login = "Login_111" };
             var newUser_2 = new User { Id = Guid.NewGuid(), Login = "Login_222" };
 
-            // Act
             await userRepository.AddUser(newUser_1);
             await userRepository.AddUser(newUser_2);
+
+            var newUserGroupAdmin = new UserGroup()
+            {
+                Id = Guid.NewGuid(),
+                Code = Group.Admin,
+                Description = "desc_AdminGroup",
+                Users = new List<User>()
+                {
+                    newUser_2,
+                }
+            };
+            var newUserGroupUser = new UserGroup()
+            {
+                Id = Guid.NewGuid(),
+                Code = Group.User,
+                Description = "desc_UserGroup",
+                Users = new List<User>()
+                {
+                    newUser_1,
+                }
+            };
+
+            await _userContext.AddAsync(newUserGroupUser);
+            await _userContext.AddAsync(newUserGroupAdmin);
+
+            var newUserStateActive = new UserState()
+            {
+                Id = Guid.NewGuid(),
+                Code = State.Active,
+                Description = "desc_ActiveState",
+                Users = new List<User>() { newUser_1 }
+            };
+            var newUserStateBlocked = new UserState()
+            {
+                Id = Guid.NewGuid(),
+                Code = State.Blocked,
+                Description = "desc_BlockedState",
+                Users = new List<User>() { newUser_2 }
+            };
+            await _userContext.AddAsync(newUserStateActive);
+            await _userContext.AddAsync(newUserStateBlocked);
+            // Act
+            await _userContext.SaveChangesAsync();
 
             var foundUserByLogin = await userRepository.GetUserById(newUser_1.Id);
 
             // Assert
             Assert.NotNull(foundUserByLogin);
+            Assert.NotNull(foundUserByLogin.UserGroup);
+            Assert.NotNull(foundUserByLogin.UserState);
+
             Assert.Equal(newUser_1.Login, foundUserByLogin.Login);
 
             _userContext.Database.EnsureDeleted();
