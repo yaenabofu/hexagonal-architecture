@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests", "Domain.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter.Api", "Adapter.Api\Adapter.Api.csproj", "{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter.HMACSHA256-PasswordHasher", "Adapter.HMACSHA256-PasswordHasher\Adapter.HMACSHA256-PasswordHasher.csproj", "{9DDDC705-C207-4462-826F-BFD90E76FE5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DDDC705-C207-4462-826F-BFD90E76FE5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DDDC705-C207-4462-826F-BFD90E76FE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DDDC705-C207-4462-826F-BFD90E76FE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DDDC705-C207-4462-826F-BFD90E76FE5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{AC4F92CC-54C6-4719-9479-A4B111C6F071} = {DBB9F31C-B84C-4CDB-887E-F356DC56DC73}
 		{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B} = {DBB9F31C-B84C-4CDB-887E-F356DC56DC73}
 		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970} = {06FAAE8C-0495-414C-9A0A-86B6ADA44FBA}
+		{9DDDC705-C207-4462-826F-BFD90E76FE5C} = {06FAAE8C-0495-414C-9A0A-86B6ADA44FBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C4D55317-4C18-4F66-9986-B0C7974EA607}
