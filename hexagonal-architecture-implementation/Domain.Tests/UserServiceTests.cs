@@ -5,7 +5,7 @@ using Domain.Ports.Driven;
 using Domain.UseCases;
 using Moq;
 
-namespace Tests
+namespace Domain.Tests
 {
     public class UserServiceTests
     {
