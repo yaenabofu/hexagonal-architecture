@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter.MsSqlServer", "Adap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter.MsSqlServer.Tests", "Adapter.MsSqlServer.Tests\Adapter.MsSqlServer.Tests.csproj", "{AC4F92CC-54C6-4719-9479-A4B111C6F071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "Domain.Tests\Domain.Tests.csproj", "{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests", "Domain.Tests\Domain.Tests.csproj", "{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter.Api", "Adapter.Api\Adapter.Api.csproj", "{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{92BE462F-07C9-4346-97E3-239D2A995535} = {06FAAE8C-0495-414C-9A0A-86B6ADA44FBA}
 		{AC4F92CC-54C6-4719-9479-A4B111C6F071} = {DBB9F31C-B84C-4CDB-887E-F356DC56DC73}
 		{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B} = {DBB9F31C-B84C-4CDB-887E-F356DC56DC73}
+		{67A1F854-F0C0-4CEA-B7F1-12F4A8E51970} = {06FAAE8C-0495-414C-9A0A-86B6ADA44FBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C4D55317-4C18-4F66-9986-B0C7974EA607}
