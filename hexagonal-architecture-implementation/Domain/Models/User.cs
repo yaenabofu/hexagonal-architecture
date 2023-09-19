@@ -9,6 +9,8 @@ namespace Domain.Models
         public string PasswordHash { get; set; }
         public DateTime CreatedData { get; set; }
         public Group UserGroupId { get; set; }
+        public UserGroup UserGroup { get; set; }
         public State UserStateId { get; set; }
+        public UserState UserState { get; set; }
     }
 }

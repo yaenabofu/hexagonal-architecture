@@ -33,21 +33,27 @@ namespace Adapter.MsSqlServer
 
         public async Task<IEnumerable<User>> GetAllUsers()
         {
-            var allUsers = await _userContext.Users.Select(c => c).ToListAsync();
+            var allUsers = await _userContext.Users.Include(u => u.UserGroup)
+                .Include(u => u.UserState)
+                .ToListAsync();
 
             return allUsers;
         }
 
         public async Task<User> GetUserById(Guid userId)
         {
-            var userWithId = await _userContext.Users.FirstOrDefaultAsync(c => c.Id.Equals(userId));
+            var userWithId = await _userContext.Users.Include(u => u.UserGroup)
+                .Include(u => u.UserState)
+                .FirstOrDefaultAsync(c => c.Id.Equals(userId));
 
             return userWithId;
         }
 
         public async Task<User> GetUserByLogin(string login)
         {
-            var userWithLogin = await _userContext.Users.FirstOrDefaultAsync(c => c.Login.Equals(login));
+            var userWithLogin = await _userContext.Users.Include(u => u.UserGroup)
+                .Include(u => u.UserState)
+                .FirstOrDefaultAsync(c => c.Login.Equals(login));
 
             return userWithLogin;
         }
