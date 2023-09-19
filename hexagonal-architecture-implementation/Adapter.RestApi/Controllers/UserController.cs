@@ -2,7 +2,6 @@
 using Domain.DTOs.Responses;
 using Domain.Exceptions;
 using Domain.Mappers;
-using Domain.Models;
 using Domain.Ports.Driving;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
