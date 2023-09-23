@@ -37,20 +37,27 @@ namespace Adapter.Api.Controllers
         [HttpGet("get-all")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> Get()
         {
-            var allUsers = await _userService.GetAllUsers();
+            try
+            {
+                var allUsers = await _userService.GetAllUsers();
 
-            var usersDTOs = allUsers.Select(c => _userMapper.MapToUserDTO(c));
+                var usersDTOs = allUsers.Select(c => _userMapper.MapToUserDTO(c));
 
-            return Ok(usersDTOs);
+                return Ok(usersDTOs);
+            }
+            catch (UsersNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [HttpGet("get-by-id")]
-        public async Task<ActionResult<UserDTO>> Get(GetUserByIdDTO dto)
+        public async Task<ActionResult<UserDTO>> Get([FromQuery] GetUserByIdDTO dto)
         {
             var validationResult = _getUserByIdValidator.Validate(dto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(validationResult.Errors.Select(c => c.ErrorMessage));
             }
 
             try
@@ -63,16 +70,16 @@ namespace Adapter.Api.Controllers
             }
             catch (UserNotFoundException ex)
             {
-                return NotFound(ex);
+                return NotFound(ex.Message);
             }
         }
         [HttpGet("get-by-login")]
-        public async Task<ActionResult<UserDTO>> Get(GetUserByLoginDTO dto)
+        public async Task<ActionResult<UserDTO>> Get([FromQuery] GetUserByLoginDTO dto)
         {
             var validationResult = _getUserByLoginValidator.Validate(dto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(validationResult.Errors.Select(c => c.ErrorMessage));
             }
 
             try
@@ -85,17 +92,17 @@ namespace Adapter.Api.Controllers
             }
             catch (UserNotFoundException ex)
             {
-                return NotFound(ex);
+                return NotFound(ex.Message);
             }
         }
 
         [HttpDelete("delete-by-id")]
-        public async Task<ActionResult<UserDTO>> Delete(DeleteUserByIdDTO dto)
+        public async Task<ActionResult<UserDTO>> Delete([FromBody] DeleteUserByIdDTO dto)
         {
             var validationResult = _deleteUserByIdValidator.Validate(dto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(validationResult.Errors.Select(c => c.ErrorMessage));
             }
 
             try
@@ -108,16 +115,16 @@ namespace Adapter.Api.Controllers
             }
             catch (UserNotFoundException ex)
             {
-                return NotFound(ex);
+                return NotFound(ex.Message);
             }
         }
         [HttpDelete("delete-by-login")]
-        public async Task<ActionResult<UserDTO>> Delete(DeleteUserByLoginDTO dto)
+        public async Task<ActionResult<UserDTO>> Delete([FromBody] DeleteUserByLoginDTO dto)
         {
             var validationResult = _deleteUserByLoginValidator.Validate(dto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(validationResult.Errors.Select(c => c.ErrorMessage));
             }
 
             try
@@ -130,7 +137,7 @@ namespace Adapter.Api.Controllers
             }
             catch (UserNotFoundException ex)
             {
-                return NotFound(ex);
+                return NotFound(ex.Message);
             }
         }
 
@@ -140,7 +147,7 @@ namespace Adapter.Api.Controllers
             var validationResult = _addUserValidator.Validate(dto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors);
+                return BadRequest(validationResult.Errors.Select(c => c.ErrorMessage));
             }
 
             try
@@ -153,15 +160,15 @@ namespace Adapter.Api.Controllers
             }
             catch (UserLoginAlreadyExistException ex)
             {
-                return Conflict(ex);
+                return Conflict(ex.Message);
             }
             catch (UserAdminAlreadyExistException ex)
             {
-                return Conflict(ex);
+                return Conflict(ex.Message);
             }
             catch (UserGroupNotFoundException ex)
             {
-                return Conflict(ex);
+                return Conflict(ex.Message);
             }
         }
     }

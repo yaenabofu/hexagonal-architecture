@@ -415,7 +415,7 @@ namespace Adapter.MsSqlServer.Tests
             {
                 Id = Guid.NewGuid(),
                 Login = "adminLogin",
-                UserGroupId = Group.Admin,
+                UserGroupEnum = Group.Admin,
             };
 
             // Act
@@ -438,7 +438,7 @@ namespace Adapter.MsSqlServer.Tests
             {
                 Id = Guid.NewGuid(),
                 Login = "userLogin",
-                UserGroupId = Group.User,
+                UserGroupEnum = Group.User,
             };
 
             // Act
@@ -462,8 +462,8 @@ namespace Adapter.MsSqlServer.Tests
             {
                 Id = Guid.NewGuid(),
                 Login = "userLogin",
-                UserGroupId = Group.User,
-                UserStateId = State.Active
+                UserGroupEnum = Group.User,
+                UserStateEnum = State.Active
             };
 
             // Act
@@ -473,7 +473,7 @@ namespace Adapter.MsSqlServer.Tests
             var blockedUser = await userRepository.MarkUserAsBlocked(userToBlock);
 
             // Assert
-            Assert.Equal(State.Blocked, blockedUser.UserStateId);
+            Assert.Equal(State.Blocked, blockedUser.UserStateEnum);
 
             _userContext.Database.EnsureDeleted();
         }

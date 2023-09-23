@@ -8,9 +8,9 @@ namespace Adapter.HMACSHA256_PasswordHasher.Configuration
 {
     public static class HMACSHA256PasswordHasherConfigurator
     {
-        public static WebApplicationBuilder AddDatabase(WebApplicationBuilder builder)
+        public static WebApplicationBuilder AddPasswordHasher(WebApplicationBuilder builder)
         {
-            builder.Configuration.AddJsonFile("hMACSHA256PasswordHasherConfiguration.json", false, true);
+            builder.Configuration.AddJsonFile("HMACSHA256PasswordHasherConfiguration.json", false, true);
             builder.Services.Configure<HMACSHA256PasswordHasherConfiguration>(
                 builder.Configuration.GetSection(nameof(HMACSHA256PasswordHasherConfiguration)));
 

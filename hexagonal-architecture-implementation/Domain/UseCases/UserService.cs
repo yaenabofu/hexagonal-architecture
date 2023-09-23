@@ -54,9 +54,9 @@ namespace Domain.UseCases
             {
                 Login = login,
                 PasswordHash = hashedPassword,
-                CreatedData = DateTime.Now,
-                UserGroupId = userGroup.Code,
-                UserStateId = userState.Code
+                CreatedDate = DateTime.Now,
+                UserGroupEnum = userGroup.Code,
+                UserStateEnum = userState.Code
             };
 
             var addedUser = await _userRepository.AddUser(userToAdd);
@@ -96,7 +96,7 @@ namespace Domain.UseCases
         {
             var allUsers = await _userRepository.GetAllUsers();
 
-            if (allUsers is null)
+            if (allUsers is null || allUsers.Count() is 0)
             {
                 throw new UsersNotFoundException("users not found");
             }

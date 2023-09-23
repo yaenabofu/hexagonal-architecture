@@ -74,14 +74,14 @@ namespace Adapter.MsSqlServer
 
         public async Task<bool> IsUserAdminExist()
         {
-            var userWithAdminGroup = await _userContext.Users.FirstOrDefaultAsync(c => c.UserGroupId.Equals(Group.Admin));
+            var userWithAdminGroup = await _userContext.Users.FirstOrDefaultAsync(c => c.UserGroupEnum.Equals(Group.Admin));
 
             return userWithAdminGroup is not null;
         }
 
         public async Task<User> MarkUserAsBlocked(User user)
         {
-            user.UserStateId = State.Blocked;
+            user.UserStateEnum = State.Blocked;
 
             _userContext.Attach(user);
             _userContext.Entry(user).State = EntityState.Modified;

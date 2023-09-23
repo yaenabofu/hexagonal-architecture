@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests", "Domain.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter.HMACSHA256-PasswordHasher", "Adapter.HMACSHA256-PasswordHasher\Adapter.HMACSHA256-PasswordHasher.csproj", "{9DDDC705-C207-4462-826F-BFD90E76FE5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter.RestApi", "Adapter.RestApi\Adapter.RestApi.csproj", "{34237C6C-20DF-4FD7-93F3-FC74FEE0C032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter.RestApi", "Adapter.RestApi\Adapter.RestApi.csproj", "{34237C6C-20DF-4FD7-93F3-FC74FEE0C032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.RestApi", "Application.RestApi\Application.RestApi.csproj", "{9BBCC328-3D0B-44AB-BE3E-F2A4D5FF5AFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{34237C6C-20DF-4FD7-93F3-FC74FEE0C032}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34237C6C-20DF-4FD7-93F3-FC74FEE0C032}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34237C6C-20DF-4FD7-93F3-FC74FEE0C032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BBCC328-3D0B-44AB-BE3E-F2A4D5FF5AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BBCC328-3D0B-44AB-BE3E-F2A4D5FF5AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BBCC328-3D0B-44AB-BE3E-F2A4D5FF5AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BBCC328-3D0B-44AB-BE3E-F2A4D5FF5AFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{B1D3DCA0-F3DC-405A-A1F6-0590F33F4E8B} = {DBB9F31C-B84C-4CDB-887E-F356DC56DC73}
 		{9DDDC705-C207-4462-826F-BFD90E76FE5C} = {06FAAE8C-0495-414C-9A0A-86B6ADA44FBA}
 		{34237C6C-20DF-4FD7-93F3-FC74FEE0C032} = {06FAAE8C-0495-414C-9A0A-86B6ADA44FBA}
+		{9BBCC328-3D0B-44AB-BE3E-F2A4D5FF5AFB} = {06FAAE8C-0495-414C-9A0A-86B6ADA44FBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C4D55317-4C18-4F66-9986-B0C7974EA607}
