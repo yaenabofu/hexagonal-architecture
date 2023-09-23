@@ -9,17 +9,18 @@ using Adapter.MsSqlServer.Migrations;
 
 namespace Adapter.MsSqlServer.Configuration
 {
-    public static class MsSqlServerAdapterConfigurator
+    public class MsSqlServerAdapterConfigurator
     {
         public static WebApplicationBuilder AddDatabase(WebApplicationBuilder builder)
         {
-            builder.Configuration.AddJsonFile("msSqlServerAdapterConfiguration.json", false, true);
-            builder.Services.Configure<MsSqlServerAdapterConfiguration>(builder.Configuration.GetSection(nameof(MsSqlServerAdapterConfiguration)));
+            builder.Configuration.AddJsonFile("MsSqlServerAdapterConfiguration.json", false, true);
 
+            builder.Services.Configure<MsSqlServerAdapterConfiguration>(builder.Configuration.GetSection(nameof(MsSqlServerAdapterConfiguration)));
             builder.Services.AddSingleton(c => c.GetRequiredService<IOptions<MsSqlServerAdapterConfiguration>>().Value);
 
-            string connectionString = builder.Configuration.GetSection(nameof(MsSqlServerAdapterConfiguration.ConnectionString)).Value;
-            builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
+            string connectionString = nameof(MsSqlServerAdapterConfiguration) + ":" + nameof(MsSqlServerAdapterConfiguration.ConnectionString);
+
+            builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(builder.Configuration.GetValue<string>(connectionString)));
 
             builder.Services.AddHostedService<MigratorHostedService>();
             builder.Services.AddScoped<IUserRepository, MsSqlServerAdapter>();

@@ -12,7 +12,7 @@ namespace Domain.Mappers
             {
                 Id = user.Id,
                 Login = user.Login,
-                CreatedData = user.CreatedData,
+                CreatedData = user.CreatedDate,
                 UserGroup = new UserGroupDTO()
                 {
                     Id = user.UserGroup.Id,
