@@ -6,7 +6,7 @@ namespace Domain.DTOs.Requests.Validators
     {
         public GetUserByIdValidator()
         {
-            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.Id).NotEmpty().SetValidator(new GuidValidator());
         }
     }
 }

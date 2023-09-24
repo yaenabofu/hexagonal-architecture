@@ -6,7 +6,7 @@ namespace Domain.DTOs.Requests.Validators
     {
         public DeleteUserByLoginValidator()
         {
-            RuleFor(x => x.Login).NotEmpty();
+            RuleFor(x => x.Login).NotEmpty().NotNull();
         }
     }
 }

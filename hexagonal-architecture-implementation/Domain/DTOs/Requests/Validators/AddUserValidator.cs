@@ -6,9 +6,9 @@ namespace Domain.DTOs.Requests.Validators
     {
         public AddUserValidator()
         {
-            RuleFor(x => x.Password).NotEmpty();
-            RuleFor(x => x.Login).NotEmpty();
-            RuleFor(x => x.Group).NotEmpty();
+            RuleFor(x => x.Password).NotEmpty().NotNull();
+            RuleFor(x => x.Login).NotEmpty().NotNull();
+            RuleFor(x => x.Group).NotEmpty().NotNull().IsInEnum();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Domain.DTOs.Requests.Validators
 {
@@ -6,7 +7,7 @@ namespace Domain.DTOs.Requests.Validators
     {
         public DeleteUserByIdValidator()
         {
-            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.Id).NotEmpty().SetValidator(new GuidValidator());
         }
     }
 }
