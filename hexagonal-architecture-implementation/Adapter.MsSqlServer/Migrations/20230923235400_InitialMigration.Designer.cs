@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Adapter.MsSqlServer.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20230923133029_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230923235400_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,17 +42,11 @@ namespace Adapter.MsSqlServer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserGroupEnum")
+                    b.Property<int>("UserGroupId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserGroupId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("UserStateEnum")
+                    b.Property<int>("UserStateId")
                         .HasColumnType("int");
-
-                    b.Property<Guid>("UserStateId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -64,13 +58,35 @@ namespace Adapter.MsSqlServer.Migrations
                     b.HasIndex("UserStateId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a73826fa-82b6-48e6-a1cc-49ef0bfc360a"),
+                            CreatedDate = new DateTime(2023, 9, 24, 4, 53, 59, 908, DateTimeKind.Local).AddTicks(5012),
+                            Login = "adminLogin",
+                            PasswordHash = "adminHashedPass",
+                            UserGroupId = 2,
+                            UserStateId = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("84123074-5af9-45b0-a501-1ba1e6afb620"),
+                            CreatedDate = new DateTime(2023, 9, 24, 4, 53, 59, 908, DateTimeKind.Local).AddTicks(5047),
+                            Login = "userLogin",
+                            PasswordHash = "userHashedPass",
+                            UserGroupId = 1,
+                            UserStateId = 1
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.UserGroup", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Code")
                         .HasColumnType("int");
@@ -82,13 +98,29 @@ namespace Adapter.MsSqlServer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = 1,
+                            Description = "Default User Group"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = 2,
+                            Description = "Admin User Group"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.UserState", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Code")
                         .HasColumnType("int");
@@ -100,6 +132,20 @@ namespace Adapter.MsSqlServer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserStates");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = 1,
+                            Description = "Active User State"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = 2,
+                            Description = "Blocked User State"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.User", b =>

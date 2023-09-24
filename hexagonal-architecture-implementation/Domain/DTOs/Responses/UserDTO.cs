@@ -2,8 +2,9 @@
 
 namespace Domain.DTOs.Responses
 {
-    public class UserDTO : BaseIdEntity
+    public class UserDTO
     {
+        public Guid Id { get; set; }
         public string Login { get; set; }
         public DateTime CreatedData { get; set; }
         public UserGroupDTO UserGroup { get; set; }

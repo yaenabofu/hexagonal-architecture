@@ -3,6 +3,6 @@
     public enum State
     {
         Active = 1,
-        Blocked = 0
+        Blocked = 2
     }
 }

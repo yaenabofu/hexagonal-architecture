@@ -53,7 +53,7 @@ namespace Adapter.MsSqlServer.Tests
 
             var newUserGroupAdmin = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.Admin,
                 Code = Group.Admin,
                 Description = "desc_AdminGroup",
                 Users = new List<User>()
@@ -63,7 +63,7 @@ namespace Adapter.MsSqlServer.Tests
             };
             var newUserGroupUser = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.User,
                 Code = Group.User,
                 Description = "desc_UserGroup",
                 Users = new List<User>()
@@ -77,14 +77,14 @@ namespace Adapter.MsSqlServer.Tests
 
             var newUserStateActive = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Active,
                 Code = State.Active,
                 Description = "desc_ActiveState",
                 Users = new List<User>() { users[0], }
             };
             var newUserStateBlocked = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Blocked,
                 Code = State.Blocked,
                 Description = "desc_BlockedState",
                 Users = new List<User>() { users[1], }
@@ -118,7 +118,7 @@ namespace Adapter.MsSqlServer.Tests
 
             var newUserGroupAdmin = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.Admin,
                 Code = Group.Admin,
                 Description = "desc_AdminGroup",
                 Users = new List<User>()
@@ -128,7 +128,7 @@ namespace Adapter.MsSqlServer.Tests
             };
             var newUserGroupUser = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.User,
                 Code = Group.User,
                 Description = "desc_UserGroup",
                 Users = new List<User>()
@@ -142,14 +142,14 @@ namespace Adapter.MsSqlServer.Tests
 
             var newUserStateActive = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Active,
                 Code = State.Active,
                 Description = "desc_ActiveState",
                 Users = new List<User>() { newUser_1 }
             };
             var newUserStateBlocked = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Blocked,
                 Code = State.Blocked,
                 Description = "desc_BlockedState",
                 Users = new List<User>() { newUser_2 }
@@ -202,7 +202,7 @@ namespace Adapter.MsSqlServer.Tests
 
             var newUserGroupAdmin = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.Admin,
                 Code = Group.Admin,
                 Description = "desc_AdminGroup",
                 Users = new List<User>()
@@ -212,7 +212,7 @@ namespace Adapter.MsSqlServer.Tests
             };
             var newUserGroupUser = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.User,
                 Code = Group.User,
                 Description = "desc_UserGroup",
                 Users = new List<User>()
@@ -226,14 +226,14 @@ namespace Adapter.MsSqlServer.Tests
 
             var newUserStateActive = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Active,
                 Code = State.Active,
                 Description = "desc_ActiveState",
                 Users = new List<User>() { newUser_1 }
             };
             var newUserStateBlocked = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Blocked,
                 Code = State.Blocked,
                 Description = "desc_BlockedState",
                 Users = new List<User>() { newUser_2 }
@@ -280,13 +280,13 @@ namespace Adapter.MsSqlServer.Tests
             var userRepository = new MsSqlServerAdapter(_userContext);
             var newUserGroupAdmin = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.Admin,
                 Code = Group.Admin,
                 Description = "desc_AdminGroup"
             };
             var newUserGroupUser = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.User,
                 Code = Group.User,
                 Description = "desc_UserGroup"
             };
@@ -312,13 +312,13 @@ namespace Adapter.MsSqlServer.Tests
             var userRepository = new MsSqlServerAdapter(_userContext);
             var newUserGroupAdmin = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.Admin,
                 Code = Group.Admin,
                 Description = "desc_AdminGroup"
             };
             var newUserGroupUser = new UserGroup()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)Group.User,
                 Code = Group.User,
                 Description = "desc_UserGroup"
             };
@@ -347,13 +347,13 @@ namespace Adapter.MsSqlServer.Tests
             var userRepository = new MsSqlServerAdapter(_userContext);
             var newUserStateActive = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Active,
                 Code = State.Active,
                 Description = "desc_ActiveState"
             };
             var newUserStateBlocked = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Blocked,
                 Code = State.Blocked,
                 Description = "desc_BlockedState"
             };
@@ -379,13 +379,13 @@ namespace Adapter.MsSqlServer.Tests
             var userRepository = new MsSqlServerAdapter(_userContext);
             var newUserStateActive = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Active,
                 Code = State.Active,
                 Description = "desc_ActiveState"
             };
             var newUserStateBlocked = new UserState()
             {
-                Id = Guid.NewGuid(),
+                Id = (int)State.Blocked,
                 Code = State.Blocked,
                 Description = "desc_BlockedState"
             };
@@ -415,7 +415,7 @@ namespace Adapter.MsSqlServer.Tests
             {
                 Id = Guid.NewGuid(),
                 Login = "adminLogin",
-                UserGroupEnum = Group.Admin,
+                UserGroupId = (int)Group.Admin,
             };
 
             // Act
@@ -438,7 +438,7 @@ namespace Adapter.MsSqlServer.Tests
             {
                 Id = Guid.NewGuid(),
                 Login = "userLogin",
-                UserGroupEnum = Group.User,
+                UserGroupId = (int)Group.User,
             };
 
             // Act
@@ -462,8 +462,8 @@ namespace Adapter.MsSqlServer.Tests
             {
                 Id = Guid.NewGuid(),
                 Login = "userLogin",
-                UserGroupEnum = Group.User,
-                UserStateEnum = State.Active
+                UserGroupId = (int)Group.User,
+                UserStateId = (int)State.Active
             };
 
             // Act
@@ -473,7 +473,7 @@ namespace Adapter.MsSqlServer.Tests
             var blockedUser = await userRepository.MarkUserAsBlocked(userToBlock);
 
             // Assert
-            Assert.Equal(State.Blocked, blockedUser.UserStateEnum);
+            Assert.Equal((int)State.Blocked, blockedUser.UserStateId);
 
             _userContext.Database.EnsureDeleted();
         }

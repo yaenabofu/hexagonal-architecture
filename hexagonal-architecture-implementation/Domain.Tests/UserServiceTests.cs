@@ -34,13 +34,13 @@ namespace Domain.Tests
             _userRepository.Setup(c => c.IsUserAdminExist()).ReturnsAsync(false);
             _userRepository.Setup(c => c.GetUserGroup(userGroup)).ReturnsAsync(new UserGroup()
             {
-                Id = userGroupId,
+                Id = (int)userGroup,
                 Code = userGroup
             });
 
             _userRepository.Setup(c => c.GetUserState(userState)).ReturnsAsync(new UserState()
             {
-                Id = userStateId,
+                Id = (int)userState,
                 Code = userState
             });
 
@@ -51,8 +51,8 @@ namespace Domain.Tests
                 Id = userId,
                 Login = login,
                 PasswordHash = hashedPassword,
-                UserGroupEnum = userGroup,
-                UserStateEnum = userState
+                UserGroupId = (int)userGroup,
+                UserStateId = (int)userState
             };
 
             _passwordHasher.Setup(c => c.Hash(password)).Returns(hashedPassword);
@@ -144,13 +144,13 @@ namespace Domain.Tests
             User userToDelete = new User()
             {
                 Id = id,
-                UserStateEnum = notBlockedStateId
+                UserStateId = (int)notBlockedStateId
             };
 
             User deletedUser = new User()
             {
                 Id = id,
-                UserStateEnum = blockedStateId
+                UserStateId = (int)blockedStateId
             };
 
             _userRepository.Setup(c => c.GetUserById(id)).ReturnsAsync(userToDelete);
@@ -160,8 +160,8 @@ namespace Domain.Tests
             var result = await _sut.DeleteUserById(id);
 
             Assert.Equal(userToDelete.Id, result.Id);
-            Assert.NotEqual(userToDelete.UserStateEnum, result.UserStateEnum);
-            Assert.Equal(blockedStateId, result.UserStateEnum);
+            Assert.NotEqual(userToDelete.UserStateId, result.UserStateId);
+            Assert.Equal((int)blockedStateId, result.UserStateId);
         }
         [Fact]
         public async Task DeleteUserByLogin_WhenUserNotExist_ShouldReturnException()
@@ -188,13 +188,13 @@ namespace Domain.Tests
             User userToDelete = new User()
             {
                 Login = login,
-                UserStateEnum = notBlockedStateId
+                UserStateId = (int)notBlockedStateId
             };
 
             User deletedUser = new User()
             {
                 Login = login,
-                UserStateEnum = blockedStateId
+                UserStateId = (int)blockedStateId
             };
 
             _userRepository.Setup(c => c.GetUserByLogin(login)).ReturnsAsync(userToDelete);
@@ -204,8 +204,8 @@ namespace Domain.Tests
             var result = await _sut.DeleteUserByLogin(login);
 
             Assert.Equal(userToDelete.Login, result.Login);
-            Assert.NotEqual(userToDelete.UserStateEnum, result.UserStateEnum);
-            Assert.Equal(blockedStateId, result.UserStateEnum);
+            Assert.NotEqual(userToDelete.UserStateId, result.UserStateId);
+            Assert.Equal((int)blockedStateId, result.UserStateId);
         }
 
         [Fact]
