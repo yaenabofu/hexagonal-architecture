@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Adapter.MsSqlServer.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -92,8 +92,8 @@ namespace Adapter.MsSqlServer.Migrations
                 columns: new[] { "Id", "CreatedDate", "Login", "PasswordHash", "UserGroupId", "UserStateId" },
                 values: new object[,]
                 {
-                    { new Guid("84123074-5af9-45b0-a501-1ba1e6afb620"), new DateTime(2023, 9, 24, 4, 53, 59, 908, DateTimeKind.Local).AddTicks(5047), "userLogin", "userHashedPass", 1, 1 },
-                    { new Guid("a73826fa-82b6-48e6-a1cc-49ef0bfc360a"), new DateTime(2023, 9, 24, 4, 53, 59, 908, DateTimeKind.Local).AddTicks(5012), "adminLogin", "adminHashedPass", 2, 1 }
+                    { new Guid("ca334fe9-cda0-4175-8cc1-df32aa5a61f0"), new DateTime(2023, 9, 24, 14, 39, 49, 624, DateTimeKind.Local).AddTicks(5646), "userLogin", "userHashedPass", 1, 1 },
+                    { new Guid("d16249b7-6d7f-4a8c-a48d-69ba92ceb345"), new DateTime(2023, 9, 24, 14, 39, 49, 624, DateTimeKind.Local).AddTicks(5611), "adminLogin", "adminHashedPass", 2, 1 }
                 });
 
             migrationBuilder.CreateIndex(

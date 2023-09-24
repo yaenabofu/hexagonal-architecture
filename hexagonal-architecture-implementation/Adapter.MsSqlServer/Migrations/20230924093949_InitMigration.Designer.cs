@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Adapter.MsSqlServer.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20230923235400_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230924093949_InitMigration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,8 +62,8 @@ namespace Adapter.MsSqlServer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a73826fa-82b6-48e6-a1cc-49ef0bfc360a"),
-                            CreatedDate = new DateTime(2023, 9, 24, 4, 53, 59, 908, DateTimeKind.Local).AddTicks(5012),
+                            Id = new Guid("d16249b7-6d7f-4a8c-a48d-69ba92ceb345"),
+                            CreatedDate = new DateTime(2023, 9, 24, 14, 39, 49, 624, DateTimeKind.Local).AddTicks(5611),
                             Login = "adminLogin",
                             PasswordHash = "adminHashedPass",
                             UserGroupId = 2,
@@ -71,8 +71,8 @@ namespace Adapter.MsSqlServer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("84123074-5af9-45b0-a501-1ba1e6afb620"),
-                            CreatedDate = new DateTime(2023, 9, 24, 4, 53, 59, 908, DateTimeKind.Local).AddTicks(5047),
+                            Id = new Guid("ca334fe9-cda0-4175-8cc1-df32aa5a61f0"),
+                            CreatedDate = new DateTime(2023, 9, 24, 14, 39, 49, 624, DateTimeKind.Local).AddTicks(5646),
                             Login = "userLogin",
                             PasswordHash = "userHashedPass",
                             UserGroupId = 1,

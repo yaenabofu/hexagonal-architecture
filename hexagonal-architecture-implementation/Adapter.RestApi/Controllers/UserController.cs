@@ -109,7 +109,9 @@ namespace Adapter.Api.Controllers
             {
                 var deletedUserById = await _userService.DeleteUserById(dto.Id);
 
-                var userDTO = _userMapper.MapToUserDTO(deletedUserById);
+                var changedUser = await _userService.GetUserById(dto.Id);
+
+                var userDTO = _userMapper.MapToUserDTO(changedUser);
 
                 return Ok(userDTO);
             }
@@ -131,7 +133,9 @@ namespace Adapter.Api.Controllers
             {
                 var deletedUserByLogin = await _userService.DeleteUserByLogin(dto.Login);
 
-                var userDTO = _userMapper.MapToUserDTO(deletedUserByLogin);
+                var changedUser = await _userService.GetUserByLogin(dto.Login);
+
+                var userDTO = _userMapper.MapToUserDTO(changedUser);
 
                 return Ok(userDTO);
             }
