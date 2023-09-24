@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Adapter.MsSqlServer.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20230924093949_InitMigration")]
+    [Migration("20230924122707_InitMigration")]
     partial class InitMigration
     {
         /// <inheritdoc />
@@ -62,8 +62,8 @@ namespace Adapter.MsSqlServer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d16249b7-6d7f-4a8c-a48d-69ba92ceb345"),
-                            CreatedDate = new DateTime(2023, 9, 24, 14, 39, 49, 624, DateTimeKind.Local).AddTicks(5611),
+                            Id = new Guid("799bab35-8bda-42cf-b9f3-ac09b91e5b9a"),
+                            CreatedDate = new DateTime(2023, 9, 24, 17, 27, 7, 128, DateTimeKind.Local).AddTicks(9158),
                             Login = "adminLogin",
                             PasswordHash = "adminHashedPass",
                             UserGroupId = 2,
@@ -71,8 +71,8 @@ namespace Adapter.MsSqlServer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ca334fe9-cda0-4175-8cc1-df32aa5a61f0"),
-                            CreatedDate = new DateTime(2023, 9, 24, 14, 39, 49, 624, DateTimeKind.Local).AddTicks(5646),
+                            Id = new Guid("395241ad-264f-4c60-bcc8-bfe743b3dfa6"),
+                            CreatedDate = new DateTime(2023, 9, 24, 17, 27, 7, 128, DateTimeKind.Local).AddTicks(9178),
                             Login = "userLogin",
                             PasswordHash = "userHashedPass",
                             UserGroupId = 1,

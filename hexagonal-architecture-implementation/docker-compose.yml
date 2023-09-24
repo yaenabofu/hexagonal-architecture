@@ -1,0 +1,36 @@
+version: '3'
+
+networks : 
+  localdev:
+    name: localdev
+    driver: bridge
+
+services:
+  database:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server  # Используйте SQL Server 2019 образ
+    environment:
+      ACCEPT_EULA: "Y"  # Принять пользовательское соглашение
+      MSSQL_PID: "Express"
+      #MSSQL_USER: "user"
+      #MSSQL_PASSWORD: "password912681JHYG"  # Пароль пользователя SQL Server
+      #SA_USER : "user"
+      MSSQL_SA_PASSWORD: "password912681JHYG"  # Имя пользователя для SQL Server
+    ports:
+      - "1433:1433"  # Проброс порта хоста на порт SQL Server контейнера
+    networks:
+      - localdev
+
+  api:
+    container_name: hexa-api
+    build: 
+      context: .
+      dockerfile: Dockerfile  
+    environment:
+      Server: "database"
+    ports:
+      - "8080:80"  # Проброс порта хоста на порт контейнера
+    depends_on:
+      - database
+    networks:
+      - localdev 

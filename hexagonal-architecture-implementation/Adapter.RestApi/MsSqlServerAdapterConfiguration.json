@@ -1,5 +1,5 @@
 ﻿{
   "MsSqlServerAdapterConfiguration": {
-    "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=PRODUCTION;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "ConnectionString": "Server=database;Database=sql-server;User id=sa;Password=password912681JHYG;MultipleActiveResultSets=true;Encrypt=false;TrustServerCertificate=True;Integrated Security=False"
   }
 }
