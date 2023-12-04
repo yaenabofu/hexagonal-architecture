@@ -1,14 +1,21 @@
 # Hexagonal architecture (Ports and Adapters)
 
-#### Technologies and Tools
+# Business Logic
+Each user is defined by the following attributes: login, password, group and status. The group can be "User" or "Admin". The status attribute can be "Active" or "Blocked".
+
+At any given time, there can be no more than one active administrator in the system (user with the "Admin" group). In addition, there should not be two or more active users with the same login (users with the "Active" group).
+
+When a user is deleted, his status in the system should change to "Blocked".
+
+## Technologies and Tools
 - .NET Core 6
 - SQL Server, EntityFrameworkCore
 - FluentValidation
 
-#### Tests
+## Tests
 - xUnit, Moq, InMemoryDB
 
-#### Deploy
+## Deploy
 - Docker
 
 # How to run the project
