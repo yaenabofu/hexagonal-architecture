@@ -18,6 +18,6 @@ When a user is deleted, his status in the system should change to "Blocked".
 ## Deploy
 - Docker
 
-# How to run the project
+# How to run
 1.   Run `docker-compose up -d` from directory `hexagonal-architecture/hexagonal-architecture-implementation`
 2.   Go to `http://localhost:8080/swagger` 
